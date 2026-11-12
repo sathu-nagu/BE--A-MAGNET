@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Share feedback about your experience with BE A MAGNET."><title>Feedback | BE A MAGNET</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head><body>
+<header class="site-header">
+  <a class="brand" href="index.html"><img class="brand-logo" src="assets/be-a-magnet-header-logo.png" alt="BE A MAGNET Mind Coaching logo"></a>
+  <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+  <nav class="nav">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="feedback.html">Feedback</a><a href="index.html#join-class-form" class="nav-cta nav-join-mobile">Join Us</a><a href="contact.html">Connect with us</a>
+  </nav>
+  <div id="google_translate_element" class="language-picker" aria-label="Choose website language"></div>
+  <a class="header-join nav-cta" href="index.html#join-class-form">Join Us</a>
+</header><main>
+<section class="page-hero"><p class="eyebrow">YOUR VOICE MATTERS</p><h1>Share your <em>feedback</em></h1><p>Your thoughts help us make the BE A MAGNET experience more meaningful.</p></section>
+<section class="section form-section"><div class="form-intro"><div class="section-label">FEEDBACK FORM</div><h2>We would love to<br><em>hear from you.</em></h2><p>Share your thoughts, suggestions or experience with our positive-energy and mindful-living approach.</p></div>
+<form class="site-form" id="feedback-form">
+<label for="feedback-name">Your name</label><input id="feedback-name" name="name" placeholder="Enter your name" required>
+<label for="feedback-email">Email address</label><input id="feedback-email" name="email" type="email" placeholder="you@example.com" required>
+<label for="rating">How would you rate us?</label><select id="rating" name="rating" required><option value="">Select a rating</option><option>5 - Excellent</option><option>4 - Very good</option><option>3 - Good</option><option>2 - Fair</option><option>1 - Needs improvement</option></select>
+<label for="feedback-message">Your feedback</label><textarea id="feedback-message" name="message" rows="6" placeholder="Write your feedback here..." required></textarea>
+<button class="button button-primary" type="submit">Submit feedback ↗</button><p class="form-note" id="feedback-status" aria-live="polite">Demo form: connect a backend or form service to receive and save submissions.</p>
+</form></section>
+</main><footer>
+  <a class="brand footer-brand" href="index.html"><img class="footer-logo footer-logo-artwork" src="assets/be-a-magnet-footer-logo.png" alt="BE A MAGNET Mind Set Success logo"></a>
+  <p>Invite positive energy. Discover your potential.</p>
+  <span class="copyright">© <span class="year"></span> BE A MAGNET. All rights reserved.</span>
+</footer>
+<!-- Floating WhatsApp contact: replace 94XXXXXXXXX with your WhatsApp number (country code, no + or spaces). -->
+<a class="wa-float" href="https://wa.me/94XXXXXXXXX" target="_blank" rel="noopener"
+   aria-label="Chat with BE A MAGNET on WhatsApp" title="WhatsApp us">
+  <span class="wa-icon">◔</span><span>WhatsApp</span>
+</a>
+
+<!-- Assistant replies are general guidance only; connect /api/chat to a secure backend for live responses. -->
+<div class="magnet-chat" id="magnetChat">
+  <button class="chat-launcher" id="chatLauncher" type="button" aria-expanded="false" aria-controls="chatPanel">
+    <span class="chat-launcher-icon">✦</span><span>Ask BE A MAGNET</span>
+  </button>
+  <section class="chat-panel" id="chatPanel" aria-label="BE A MAGNET assistant" hidden>
+    <header class="chat-head">
+      <div><strong>BE A MAGNET Assistant</strong><small>Positive living assistant</small></div>
+      <button id="chatClose" type="button" aria-label="Close chat">×</button>
+    </header>
+    <div class="chat-messages" id="chatMessages" aria-live="polite">
+      <div class="chat-bubble bot">Hello! Welcome to BE A MAGNET. Ask me about our approach, mindful living or how to connect with us.</div>
+    </div>
+    <form class="chat-form" id="chatForm">
+      <input id="chatInput" type="text" placeholder="Type your question..." autocomplete="off" required>
+      <button type="submit" aria-label="Send message">➤</button>
+    </form>
+    <p class="chat-note">Our reflections are for general wellbeing and are not professional mental-health advice.</p>
+  </section>
+</div>
+
+<script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false, includedLanguages: 'en,ta,si,hi,fr,es,de,it,ja,ko,zh-CN,ar,pt,ru,bn,ms,th,tr,nl,pl,ur,ne'}, 'google_translate_element');
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
+<script src="script.js"></script></body></html>

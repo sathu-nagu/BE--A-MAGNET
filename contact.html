@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Contact BE A MAGNET with questions or reflections."><title>Connect with Us | BE A MAGNET</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head><body>
+<header class="site-header">
+  <a class="brand" href="index.html"><img class="brand-logo" src="assets/be-a-magnet-header-logo.png" alt="BE A MAGNET Mind Coaching logo"></a>
+  <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+  <nav class="nav">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="feedback.html">Feedback</a><a href="index.html#join-class-form" class="nav-cta nav-join-mobile">Join Us</a><a href="contact.html">Connect with us</a>
+  </nav>
+  <div id="google_translate_element" class="language-picker" aria-label="Choose website language"></div>
+  <a class="header-join nav-cta" href="index.html#join-class-form">Join Us</a>
+</header><main>
+<section class="page-hero"><p class="eyebrow">GET IN TOUCH</p><h1>Connect <em>with us</em></h1><p>Questions about BE A MAGNET or ready to join a class? We would love to hear from you.</p></section>
+<section class="section contact-section"><div class="contact-copy"><div class="section-label">WE'RE HERE TO LISTEN</div><h2>Let's start a<br><em>conversation.</em></h2><p>Reach out with a question, share a reflection or learn more about our approach to positive energy and mindful living.</p>
+<div class="contact-item"><span>☎</span><div><small>PHONE / WHATSAPP</small><strong>Add your contact number</strong></div></div>
+<div class="contact-item"><span>✉</span><div><small>EMAIL ADDRESS</small><strong>Add your email address</strong></div></div>
+<div class="contact-item"><span>⌖</span><div><small>LOCATION</small><strong>Add your location</strong></div></div>
+<div class="contact-item"><span>◷</span><div><small>AVAILABLE HOURS</small><strong>Add your available hours</strong></div></div>
+<button class="button button-primary" id="join-class-toggle" type="button" aria-expanded="false" aria-controls="join-class-form">Join our class ↗</button>
+<a class="button button-primary" id="contact-whatsapp" href="https://wa.me/">Chat on WhatsApp ↗</a></div>
+<form class="site-form" id="join-class-form" hidden>
+  <h3>Join our class</h3>
+  <label for="join-name">Full name</label>
+  <input id="join-name" name="name" type="text" autocomplete="name" placeholder="Enter your full name" required>
+  <label for="join-country">Country / calling code</label>
+  <select id="join-country" name="country" required>
+    <option value="" selected disabled>Select your country</option>
+    <option value="94">Sri Lanka (+94)</option>
+    <option value="91">India (+91)</option>
+    <option value="880">Bangladesh (+880)</option>
+    <option value="977">Nepal (+977)</option>
+    <option value="92">Pakistan (+92)</option>
+    <option value="960">Maldives (+960)</option>
+    <option value="1">United States (+1)</option>
+    <option value="1">Canada (+1)</option>
+    <option value="44">United Kingdom (+44)</option>
+    <option value="61">Australia (+61)</option>
+    <option value="64">New Zealand (+64)</option>
+    <option value="971">United Arab Emirates (+971)</option>
+    <option value="966">Saudi Arabia (+966)</option>
+    <option value="974">Qatar (+974)</option>
+    <option value="60">Malaysia (+60)</option>
+    <option value="65">Singapore (+65)</option>
+    <option value="33">France (+33)</option>
+    <option value="49">Germany (+49)</option>
+    <option value="39">Italy (+39)</option>
+    <option value="34">Spain (+34)</option>
+    <option value="81">Japan (+81)</option>
+    <option value="82">South Korea (+82)</option>
+    <option value="86">China (+86)</option>
+    <option value="27">South Africa (+27)</option>
+  </select>
+  <label for="join-phone">Phone number</label>
+  <input id="join-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" pattern="[0-9]{6,15}" placeholder="Enter digits only" title="Enter 6 to 15 digits, without the country code" required>
+  <label for="join-message">Message</label>
+  <textarea id="join-message" name="message" rows="5" placeholder="Tell us what you would like to learn..." required></textarea>
+  <button class="button button-primary" type="submit">Send class request ↗</button>
+  <p class="form-note" id="join-class-status" aria-live="polite">Your request will be prepared in WhatsApp so you can send it to us.</p>
+</form></section>
+</main><footer>
+  <a class="brand footer-brand" href="index.html"><img class="footer-logo footer-logo-artwork" src="assets/be-a-magnet-footer-logo.png" alt="BE A MAGNET Mind Set Success logo"></a>
+  <p>Invite positive energy. Discover your potential.</p>
+  <span class="copyright">© <span class="year"></span> BE A MAGNET. All rights reserved.</span>
+</footer>
+<!-- Floating WhatsApp contact uses the international number without + or spaces. -->
+<a class="wa-float" href="https://wa.me/94722026727" target="_blank" rel="noopener"
+   aria-label="Chat with BE A MAGNET on WhatsApp" title="WhatsApp us">
+  <span class="wa-icon">◔</span><span>WhatsApp</span>
+</a>
+
+<!-- Assistant replies are general guidance only; connect /api/chat to a secure backend for live responses. -->
+<div class="magnet-chat" id="magnetChat">
+  <button class="chat-launcher" id="chatLauncher" type="button" aria-expanded="false" aria-controls="chatPanel">
+    <span class="chat-launcher-icon">✦</span><span>Ask BE A MAGNET</span>
+  </button>
+  <section class="chat-panel" id="chatPanel" aria-label="BE A MAGNET assistant" hidden>
+    <header class="chat-head">
+      <div><strong>BE A MAGNET Assistant</strong><small>Positive living assistant</small></div>
+      <button id="chatClose" type="button" aria-label="Close chat">×</button>
+    </header>
+    <div class="chat-messages" id="chatMessages" aria-live="polite">
+      <div class="chat-bubble bot">Hello! Welcome to BE A MAGNET. Ask me about our approach, mindful living or how to connect with us.</div>
+    </div>
+    <form class="chat-form" id="chatForm">
+      <input id="chatInput" type="text" placeholder="Type your question..." autocomplete="off" required>
+      <button type="submit" aria-label="Send message">➤</button>
+    </form>
+    <p class="chat-note">Our reflections are for general wellbeing and are not professional mental-health advice.</p>
+  </section>
+</div>
+
+<script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false, includedLanguages: 'en,ta,si,hi,fr,es,de,it,ja,ko,zh-CN,ar,pt,ru,bn,ms,th,tr,nl,pl,ur,ne'}, 'google_translate_element');
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
+<script src="script.js"></script></body></html>
