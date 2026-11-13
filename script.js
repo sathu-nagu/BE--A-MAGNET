@@ -1,3 +1,11 @@
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: "en",
+    autoDisplay: false,
+    includedLanguages: "en,ta,si,hi,fr,es,de,it,ja,ko,zh-CN,ar,pt,ru,bn,ms,th,tr,nl,pl,ur,ne"
+  }, "google_translate_element");
+}
+
 const WHATSAPP_NUMBER = "94722026727";
 
 document.querySelectorAll(".year").forEach(el => el.textContent = new Date().getFullYear());
@@ -89,14 +97,83 @@ const joinClassToggle = document.getElementById("join-class-toggle");
 const joinClassForm = document.getElementById("join-class-form");
 if (joinClassToggle && joinClassForm) {
   const closedLabel = joinClassToggle.textContent.trim();
+  const country = joinClassForm.elements.country;
+  const otherCountryFields = joinClassForm.querySelector("#join-other-country-fields");
+  const otherCountryName = joinClassForm.elements.otherCountry;
+  const otherCountryCode = joinClassForm.elements.otherCountryCode;
+  const firstName = joinClassForm.elements.firstName;
+  const secondName = joinClassForm.elements.secondName;
+  const phoneNumber = joinClassForm.elements.phone;
+  const phoneNumberLengths = {
+    "1": [10, 10],
+    "27": [9, 9],
+    "33": [9, 9],
+    "34": [9, 9],
+    "39": [6, 11],
+    "44": [7, 10],
+    "49": [5, 11],
+    "60": [8, 10],
+    "61": [9, 9],
+    "64": [8, 10],
+    "65": [8, 8],
+    "81": [9, 10],
+    "82": [8, 10],
+    "86": [11, 11],
+    "91": [10, 10],
+    "92": [10, 10],
+    "94": [9, 9],
+    "960": [7, 7],
+    "966": [9, 9],
+    "971": [8, 9],
+    "974": [8, 8],
+    "977": [10, 10],
+    "880": [10, 10]
+  };
+  const scrollJoinFormIntoView = () => joinClassForm.scrollIntoView({behavior: "instant", block: "start"});
+  const updateOtherCountryFields = () => {
+    const isOther = country.value === "other";
+    otherCountryFields.hidden = !isOther;
+    otherCountryName.required = isOther;
+    otherCountryCode.required = isOther;
+  };
+  const updatePhoneNumberLength = () => {
+    const [minDigits, maxDigits] = phoneNumberLengths[country.value] || [6, 15];
+    phoneNumber.maxLength = maxDigits;
+    phoneNumber.pattern = `[0-9]{${minDigits},${maxDigits}}`;
+    phoneNumber.placeholder = minDigits === maxDigits
+      ? `Enter ${minDigits} digits`
+      : `Enter ${minDigits}-${maxDigits} digits`;
+    phoneNumber.title = minDigits === maxDigits
+      ? `Enter exactly ${minDigits} digits, without the country code.`
+      : `Enter between ${minDigits} and ${maxDigits} digits, without the country code.`;
+    if (country.value === "94") phoneNumber.title += " Do not include the leading 0.";
+    phoneNumber.value = phoneNumber.value.slice(0, maxDigits);
+  };
+  country.addEventListener("change", updateOtherCountryFields);
+  country.addEventListener("change", updatePhoneNumberLength);
+  updateOtherCountryFields();
+  updatePhoneNumberLength();
+  [firstName, secondName].forEach(input => {
+    input.addEventListener("input", () => {
+      const text = input.value.replace(/\p{N}/gu, "");
+      if (input.value !== text) input.value = text;
+    });
+  });
+  [otherCountryCode, joinClassForm.elements.phone].forEach(input => {
+    input.addEventListener("input", () => {
+      const digits = input.value.replace(/\D/g, "").slice(0, input.maxLength);
+      if (input.value !== digits) input.value = digits;
+    });
+  });
+
   joinClassToggle.addEventListener("click", () => {
     const open = joinClassForm.hidden;
     joinClassForm.hidden = !open;
     joinClassToggle.setAttribute("aria-expanded", String(open));
     joinClassToggle.textContent = open ? "Close form ×" : closedLabel;
     if (open) {
-      joinClassForm.scrollIntoView({behavior: "smooth", block: "nearest"});
-      joinClassForm.querySelector("#join-name").focus();
+      scrollJoinFormIntoView();
+      firstName.focus({preventScroll: true});
     }
   });
 
@@ -105,8 +182,8 @@ if (joinClassToggle && joinClassForm) {
     joinClassToggle.setAttribute("aria-expanded", "true");
     joinClassToggle.textContent = "Close form ×";
     requestAnimationFrame(() => {
-      joinClassForm.scrollIntoView({behavior: "smooth", block: "start"});
-      joinClassForm.querySelector("#join-name").focus({preventScroll: true});
+      scrollJoinFormIntoView();
+      firstName.focus({preventScroll: true});
     });
   }
 
@@ -115,15 +192,22 @@ if (joinClassToggle && joinClassForm) {
     if (!joinClassForm.reportValidity()) return;
 
     const data = new FormData(joinClassForm);
-    const country = joinClassForm.elements.country;
-    const countryName = country.selectedOptions[0].textContent.replace(/\s\(\+\d+\)$/, "");
+    const isOther = country.value === "other";
+    const countryName = isOther
+      ? String(data.get("otherCountry")).trim()
+      : country.selectedOptions[0].textContent.replace(/\s\(\+\d+\)$/, "");
+    const countryCode = isOther
+      ? String(data.get("otherCountryCode")).replace(/\D/g, "")
+      : String(data.get("country"));
     const phone = String(data.get("phone")).replace(/\D/g, "");
     const request = [
       "Hello BE A MAGNET, I would like to join your class.",
       "",
-      `Full name: ${String(data.get("name")).trim()}`,
+      `First name: ${String(data.get("firstName")).trim()}`,
+      `Second name: ${String(data.get("secondName")).trim()}`,
+      `Email: ${String(data.get("email")).trim()}`,
       `Country: ${countryName}`,
-      `Phone: +${String(data.get("country"))}${phone}`,
+      `Phone: +${countryCode}${phone}`,
       `Message: ${String(data.get("message")).trim()}`
     ].join("\n");
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(request)}`;

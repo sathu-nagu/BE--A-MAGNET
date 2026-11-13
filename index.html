@@ -206,8 +206,15 @@
           class="cta-text-link" href="feedback.html">Share your feedback</a></div>
       <form class="site-form" id="join-class-form" hidden>
         <h3>Join our class</h3>
-        <label for="join-name">Full name</label>
-        <input id="join-name" name="name" type="text" autocomplete="name" placeholder="Enter your full name" required>
+        <label for="join-first-name">First name</label>
+        <input id="join-first-name" name="firstName" type="text" autocomplete="given-name"
+          placeholder="Enter your first name" required>
+        <label for="join-second-name">Second name</label>
+        <input id="join-second-name" name="secondName" type="text" autocomplete="family-name"
+          placeholder="Enter your second name" required>
+        <label for="join-email">Email address</label>
+        <input id="join-email" name="email" type="email" autocomplete="email"
+          placeholder="Enter your email address" required>
         <label for="join-country">Country / calling code</label>
         <select id="join-country" name="country" required>
           <option value="" selected disabled>Select your country</option>
@@ -235,10 +242,23 @@
           <option value="82">South Korea (+82)</option>
           <option value="86">China (+86)</option>
           <option value="27">South Africa (+27)</option>
+          <option value="other">Other</option>
         </select>
+        <div class="other-country-fields" id="join-other-country-fields" hidden>
+          <div>
+            <label for="join-other-country">Country name</label>
+            <input id="join-other-country" name="otherCountry" type="text" autocomplete="country-name"
+              placeholder="Enter your country">
+          </div>
+          <div>
+            <label for="join-other-country-code">Country calling code (without +)</label>
+            <input id="join-other-country-code" name="otherCountryCode" type="text" inputmode="numeric"
+              pattern="[0-9]{1,3}" maxlength="3" placeholder="For example, 55" title="Enter 1 to 3 digits">
+          </div>
+        </div>
         <label for="join-phone">Phone number</label>
         <input id="join-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national"
-          pattern="[0-9]{6,15}" placeholder="Enter digits only"
+          pattern="[0-9]{6,15}" maxlength="15" placeholder="Enter digits only"
           title="Enter 6 to 15 digits, without the country code" required>
         <label for="join-message">Message</label>
         <textarea id="join-message" name="message" rows="5"
@@ -253,7 +273,16 @@
     <a class="brand footer-brand" href="index.html"><img class="footer-logo footer-logo-artwork" src="assets/be-a-magnet-footer-logo.png"
         alt="BE A MAGNET Mind Set Success logo"></a>
     <p>Invite positive energy. Discover your potential.</p>
-    <span class="copyright">© <span class="year"></span> BE A MAGNET. All rights reserved.</span>
+    <div class="footer-credits">
+      <span class="copyright">© <span class="year"></span> SAN IT HUB. All Rights Reserved.</span>
+      <div class="footer-contact-links">
+        <a class="footer-email-link" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=SANTHOSHNAGARATNAM@GMAIL.COM"
+          target="_blank" rel="noopener noreferrer">Email me</a>
+        <a class="footer-whatsapp-link" href="https://wa.me/94722026727" target="_blank"
+          rel="noopener noreferrer">WhatsApp me</a>
+      </div>
+      <span class="copyright">Designed &amp; Developed by SAN IT HUB.</span>
+    </div>
   </footer>
   <!-- Floating WhatsApp contact: use the international number without + or spaces. -->
   <a class="wa-float" href="https://wa.me/94722026727" target="_blank" rel="noopener"
@@ -283,13 +312,8 @@
     </section>
   </div>
 
-  <script>
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false, includedLanguages: 'en,ta,si,hi,fr,es,de,it,ja,ko,zh-CN,ar,pt,ru,bn,ms,th,tr,nl,pl,ur,ne'}, 'google_translate_element');
-    }
-  </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
   <script src="script.js"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
 </body>
 
 </html>
