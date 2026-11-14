@@ -172,7 +172,6 @@ if (joinClassToggle && joinClassForm) {
     joinClassToggle.setAttribute("aria-expanded", String(open));
     joinClassToggle.textContent = open ? "Close form ×" : closedLabel;
     if (open) {
-      scrollJoinFormIntoView();
       firstName.focus({preventScroll: true});
     }
   });
